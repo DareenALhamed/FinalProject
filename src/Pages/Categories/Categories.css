@@ -1,0 +1,13 @@
+.categories{
+    
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+   
+}
+.catContent{
+  
+    display: flex;
+    flex-wrap: wrap;
+   
+}
