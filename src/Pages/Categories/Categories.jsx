@@ -14,7 +14,7 @@ export default function Categories() {
   const getCategories = async () => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/categories?limit=10`
+        `/categories?limit=10`
         // ,{signal:controller.signal}// for clean up code, when the user requests sth and leave it immediately
       );
 

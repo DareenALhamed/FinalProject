@@ -18,7 +18,7 @@ export default function Home() {
 
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/categories?limit=10`
+        `/categories?limit=10`
       );
 
       // {data} > because axios return object

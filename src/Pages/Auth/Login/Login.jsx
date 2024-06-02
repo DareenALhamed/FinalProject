@@ -51,8 +51,8 @@ export default function Login() {
     console.log(validData);
     
     try {
-      const { data } = axios.post(
-        `${import.meta.env.VITE_API}/auth/signin`,
+      const { data } =  axios.post(
+        `/auth/signin`,
         user
       );
 
@@ -103,7 +103,7 @@ export default function Login() {
     setLoader(true);
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API}/auth/signin`,
+        `/auth/signin`,
         {
           email: user.email,
           password: user.password,

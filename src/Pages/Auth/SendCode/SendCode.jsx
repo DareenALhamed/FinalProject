@@ -45,7 +45,7 @@ export default function SendCode() {
         setLoader(true);
         try {
           const { data } = await axios.patch(
-            `${import.meta.env.VITE_API}/auth/sendcode`,
+            `/auth/sendcode`,
             {
               email: user.email,
             }

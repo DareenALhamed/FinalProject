@@ -13,7 +13,7 @@ export default function Products() {
   const getProducts = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API}/products`);
+      const { data } = await axios.get(`/products`);
       if (data.message == "success") setProducts(data.products);
     } catch (error) {
       toast.error("error.response.data.message" || "Something went wrong");
