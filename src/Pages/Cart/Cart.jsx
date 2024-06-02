@@ -1,13 +1,14 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { CiHeart } from "react-icons/ci";
+import SmallLoading from "../../Components/SmallLoading/SmallLoading";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingClear, setLoadingClear] = useState(false);
- // const [totalPricae, setTotalPricae] = useState(0);
   const token = localStorage.getItem("userToken");
 
   async function getCart() {
@@ -26,30 +27,30 @@ const Cart = () => {
       setLoading(false);
     }
   }
-  async function removeCart() {
-    setLoadingClear(true);
+  const removeCart = async (productId) => {
+    const token = localStorage.getItem("userToken");
+    setLoading(true);
     try {
       const { data } = await axios.patch(
-        `/cart/removeItem`,
+        `/cart/removeItem`, // the second parameter which is body
         {
-          productId,
+          productId: productId, //from the backend, if two of them equals, wh can just write one of them
           quantity: 1,
         },
         {
-          headers: {
-            Authorization: `Tariq__${token}`,
-          },
+          headers: { authorization: `Tariq__${token}` }, //from the backend, postman
         }
       );
       if (data.message == "success") {
-        setCart([]);
+        toast.success("product Removed successfully");
+        // navigate('/cart')
       }
     } catch (error) {
-      toast.error(error.response.data.message || "Something went wrong!");
+      toast.error(error.response.data.message || "Something went wrong");
     } finally {
-      setLoadingClear(false);
+      setLoading(false);
     }
-  }
+  };
   async function clearCart() {
     setLoadingClear(true);
     try {
@@ -81,41 +82,7 @@ const Cart = () => {
   }
 
   return (
-    // <div>
-    //   <h1>Cart</h1>
-    //   {cart.length > 0 ? (
-    //     <div>
-    //       <table>
-    //         <thead>
-    //           <tr>
-    //             <th>Image</th>
-    //             <th>Name</th>
-    //             <th>Price</th>
-    //           </tr>
-    //         </thead>
-    //         <tbody>
-    //           {cart.map((product) => (
-    //             <tr>
-    //               <td>
-    //                 <img
-    //                   src={product.details.mainImage.secure_url}
-    //                   alt={product.name}
-    //                 />
-    //               </td>
-    //               <td>{product.details.name}</td>
-    //               <td>${product.details.finalPrice}</td>
-    //             </tr>
-    //           ))}
-    //         </tbody>
-    //       </table>
-    //       <button onClick={clearCart}>
-    //         {loadingClear ? "Loading..." : "Clear"}
-    //       </button>
-    //     </div>
-    //   ) : (
-    //     <p>Cart is empty</p>
-    //   )}
-    // </div>
+   
     <>
       {cart.length > 0 ? (
         <div>
@@ -186,11 +153,12 @@ const Cart = () => {
                               
                               <button
                                 className="btn btn-light border text-danger icon-hover-danger"
-                                onClick={removeCart}
+                                onClick={() => removeCart(product._id)}
                               >
                                 {" "}
-                                Remove
+                                {loading ? <SmallLoading /> : "Remove"}
                               </button>
+                              
                             </div>
                           </div>
                         </div>
