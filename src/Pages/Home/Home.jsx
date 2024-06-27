@@ -6,24 +6,23 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Categories from "../Categories/Categories";
 import "./Home.css";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
   const [loader, setLoader] = useState(false);
   const [loading, setLoading] = useState(false); //to know if there is loading or not
+  const [products, setProducts] = useState([]);
 
   const getCategories = async () => {
     setLoader(true);
     setLoading(true);
 
     try {
-      const { data } = await axios.get(
-        `/categories?limit=10`
-      );
+      const { data } = await axios.get(`/categories?limit=10`);
 
       // {data} > because axios return object
 
-      console.log(data);
       if (data.message == "success") {
         setCategories(data.categories);
       }
@@ -99,7 +98,6 @@ export default function Home() {
                             <Link
                               to={`/categories/${category._id}`}
                               className="text-white"
-                              
                             >
                               Shop Now
                             </Link>
@@ -114,40 +112,11 @@ export default function Home() {
               <div
                 id="carouselExampleFade"
                 className="carousel slide carousel-fade"
-              >
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
-                    <img src="..." className="d-block w-100" alt="..." />
-                  </div>
-                </div>
-                <button
-                  className="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleFade"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    className="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  />
-                  <span className="visually-hidden">Previous</span>
-                </button>
-                <button
-                  className="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleFade"
-                  data-bs-slide="next"
-                >
-                  <span
-                    className="carousel-control-next-icon"
-                    aria-hidden="true"
-                  />
-                  <span className="visually-hidden">Next</span>
-                </button>
-              </div>
+              ></div>
             </div>
           </div>
         </div>
+
         <div className="container productner my-5 py-5">
           <div className="row">
             <div className="coulmn mb-5">
@@ -161,6 +130,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+
+      
     </>
   );
 }

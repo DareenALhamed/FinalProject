@@ -146,6 +146,7 @@ export default function Login() {
               value={user.email}
               onChange={handelChange}
             />
+            
             <input
               type="password"
               className="pass"
@@ -161,8 +162,8 @@ export default function Login() {
               value={!loader ? "LOGIN" : "In progress"}
             />
 
-            <button>
-              <Link to="/SendCode">Forget Passowrd?</Link>
+            <button className="forget">
+              <Link className="forgetpass" to="/SendCode">Forget Passowrd?</Link>
             </button>
           </div>
 

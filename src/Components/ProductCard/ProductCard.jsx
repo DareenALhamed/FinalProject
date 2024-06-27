@@ -20,11 +20,13 @@ const ProductCard = ({ product }) => {
         {
           headers: { authorization: `Tariq__${token}` }, //from the backend, postman
         }
-      );
+        
+      ); 
       if (data.message == "success") {
         toast.success("product added successfully");
         // navigate('/cart')
       }
+      
     } catch (error) {
       toast.error(error.response.data.message || "Something went wrong");
     } finally {

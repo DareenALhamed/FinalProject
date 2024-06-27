@@ -183,6 +183,7 @@ export default function Register() {
               value={user.password}
               onChange={handelChange}
             />
+            
             <input
               type="password"
               name="password2"
