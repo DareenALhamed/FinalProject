@@ -79,7 +79,7 @@ const Cart = () => {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <SmallLoading  color="blue" size={100}/>;
   }
 
   return (
