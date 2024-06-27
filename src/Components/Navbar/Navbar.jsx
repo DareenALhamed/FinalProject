@@ -28,10 +28,11 @@ export default function Navbar() {
       <header>
         <nav className="navbar navbar-expand-lg  ">
           <div className="container gx-5  ">
-            <Link className="navbar-brand text-white fs-3 to='/Home'">
+            <Link className="navbar-brand text-danger fs-3 to='/Home'">
               <FiTarget className="text-danger gx-2 fs-1 target" />
-              TARGET
+              TARGET 
             </Link>
+            
             <button
               className="navbar-toggler "
               type="button"
