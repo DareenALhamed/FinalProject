@@ -14,6 +14,10 @@ import SendCode from './Pages/Auth/SendCode/SendCode';
 import UserContextProvider from "./context/User";
 import CatagoryProducts from './Pages/Categories/CategoryProducts';
 import Cart from './Pages/Cart/Cart';
+import ProtectedRoutes from './Components/Protected/ProtectedRoutes';
+import Nprotected from "./Components/Protected/NProtected";
+import Contact from './Pages/Contact/Contact';
+
 
 
 
@@ -29,6 +33,10 @@ export default function App() {
           element: <Home />,
         },
         {
+          path: "/Contact",
+          element: <Contact/>,
+        },
+        {
           path: "/categories/:id",//details of the category by ID
           element: <CatagoryProducts />,
         },
@@ -38,26 +46,32 @@ export default function App() {
           element: <Products />,
         },
         {
+          
           path: "/Cart",
-          element: <Cart />,
+          element: 
+          <ProtectedRoutes>
+          <Cart />
+          </ProtectedRoutes>
+         ,
+
         },
 
         {
           path: "/Register",
         
           element: 
-         // <NProtected>
+          <NProtected>
             <Register />
-         // </NProtected>
+          </NProtected>
           
           ,
         },
         {
           path: "/Login",
           element:
-         // <NProtected>
+          <Nprotected>
             <Login />
-         // </NProtected> ,
+          </Nprotected> ,
         },
         {
           path: "/ResetPassword",

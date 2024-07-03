@@ -28,7 +28,7 @@ export default function Navbar() {
       <header>
         <nav className="navbar navbar-expand-lg  ">
           <div className="container gx-5  ">
-            <Link className="navbar-brand text-danger fs-3 to='/Home'">
+            <Link className="navbar-brand text-danger fs-3 "to='/Home'>
               <FiTarget className="text-danger gx-2 fs-1 target" />
               TARGET 
             </Link>
@@ -53,12 +53,7 @@ export default function Navbar() {
                     </Link>
                   </li>
 
-                  <li className="nav-item  pl-1   ">
-                    <Link className="nav-link " to="/About">
-                      <IoMdInformationCircle />
-                      About
-                    </Link>
-                  </li>
+                  
                   <li className="nav-item pl-1 ">
                     <Link className="nav-link" to="Contact">
                       <FaPhone />
