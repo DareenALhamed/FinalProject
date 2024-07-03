@@ -133,6 +133,8 @@ export default function Login() {
 
   return (
     <>
+          {errors.length > 0 ? errors.map((error) => <p className='fs-4 p-2   text-bg-danger text-wrap" style="width: 6rem;'>{error}</p>) : null}
+
       <form onSubmit={submit}>
         <div id="login-box">
           <div className="left">

@@ -151,7 +151,7 @@ export default function Register() {
 
   return (
     <>
-      {errors.length > 0 ? errors.map((error) => <p>{error}</p>) : null}
+      {errors.length > 0 ? errors.map((error) => <p className='fs-4 p-2   text-bg-danger text-wrap" style="width: 6rem;'>{error}</p>) : null}
       
       <form onSubmit={handelSubmit}>
         <div id="login-box">
